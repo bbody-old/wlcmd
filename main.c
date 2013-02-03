@@ -22,7 +22,7 @@ int main(int argc, char ** argv, char **envp)
     if (help(argv[1]) == 0)
     {
         printf("Converts some commands between Windows and Linux.\n");
-        printf("Usage: wlcmd [-h|-help|--help]\n       wlcmd [-d (Description)] <command>\nE.g. twlcmd ls -> Windows: dir\n     twlcmd -d ls -> Windows: dir - Lists files and directories");
+        printf("Usage: wlcmd [-h|-help|--help]\n       wlcmd [-d (Description)] <command>\nE.g. twlcmd ls -> Windows: dir\n     twlcmd -d ls -> Windows: dir - Lists files and directories\n");
         return SUCCESS;
     }
 
