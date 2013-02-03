@@ -5,6 +5,8 @@
 #include "wlcmd.h"
 #include "error.h"
 
+#define SUCCESS 0
+
 // Commands
 Flag parseFlag(char * flag);
 int help(char * str);
@@ -20,8 +22,8 @@ int main(int argc, char ** argv, char **envp)
     if (help(argv[1]) == 0)
     {
         printf("Converts some commands between Windows and Linux.\n");
-        printf("Flags:\n\t -h  Help\n\t -n  *Nix\n\t\ -w  Windows\n\t -d Description\n");
-        return 0;
+        printf("Usage: wlcmd [-h|-help|--help]\n       wlcmd [-d (Description)] <command>\nE.g. twlcmd ls -> Windows: dir\n     twlcmd -d ls -> Windows: dir - Lists files and directories");
+        return SUCCESS;
     }
 
     // Check if can open files
@@ -31,37 +33,63 @@ int main(int argc, char ** argv, char **envp)
     }
 
     // Check for correct number of arguments
-    if ((argc > 2) && (argc < 5))
+    if ((argc > 1) && (argc < 4))
     {
         int index = 1;
+        Flag f = fInvalid;
+        char * command;
 
-        // Determine first flag
-        Flag flag = parseFlag(argv[index]);
-        index = index + 1;
-
-        // Check if there is another flag for description
-        if (strcmp(argv[index], DES) == 0)
-        {
-            index = index + 1;
-
-            if (flag == fNix)
-            {
-                flag = fNixDes; // Add description tag
+        // If has 2 arguments
+        if (argc == 3){
+            // Determine first is a flag
+            if (argv[1][0] == '-'){
+                if (argv[1][1] == 'd'){
+                    f = fDes;
+                } else {
+                    f = fInvalid;
+                }
+                command = malloc(sizeof(char) * strlen(argv[2]));
+                strcpy(command, argv[2]);
+            } else if (argv[2][0] == '-') { // Second is flag
+                if (argv[2][1] == 'd'){
+                    f = fDes;
+                } else {
+                    f = fInvalid;
+                }
+                command = malloc(sizeof(char) * strlen(argv[1]));
+                strcpy(command, argv[1]);
+            } else {
+                 return error(eAttributes);
             }
-            else if (flag == fWindows)
-            {
-                flag = fWindowsDes; // Add description tag
-            }
+        } else if (argc == 2){ // If only one
+            command = malloc(sizeof(char) * strlen(argv[1]));
+            strcpy(command, argv[1]);
         }
-        if (argv[index] != NULL)
-        {
-            char * command = argv[index];
 
-            return commandTranslator(command, flag);
-        }
-        else
-        {
-            return error(eAttributes);
+        // Get an index of both *nix and Window commands
+        int windowsIndex = getIndex(command, winCommands);
+        int nixIndex = getIndex(command, nixCommands);
+
+        if ((windowsIndex != -1) && (nixIndex != -1)){ // If both have same com
+            printf("Both: %s", argv[index]);
+            if (f == fDes){
+                printf(" - %s", desCommands[windowsIndex]);
+            }
+            printf("\n");
+        } else if (windowsIndex != -1){ // If the command is a Windows command
+            printf("*nix: %s", nixCommands[windowsIndex]);
+            if (f == fDes){
+                printf(" - %s", desCommands[windowsIndex]);
+            }
+            printf("\n");
+        } else if (nixIndex != -1){ // If command is a *nix command
+            printf("Windows: %s", winCommands[nixIndex]);
+            if (f == fDes){
+                printf(" - %s", desCommands[nixIndex]);
+            }
+            printf("\n");
+        } else { // Not a recognised command
+            return error(eCommand);
         }
     }
     else
@@ -69,34 +97,10 @@ int main(int argc, char ** argv, char **envp)
         return error(eAttributes);
     }
     cleanup();
+    return SUCCESS;
 }
 
-/* parseFlag
- * Checks what flag has been entered.
- */
-Flag parseFlag(char * flag)
-{
-    if (strcmp(flag, NIX) == 0)
-    {
-        return fNix;
-    }
-    else if (strcmp(flag, WINDOWS) == 0)
-    {
-        return fWindows;
-    }
-    else if (strcmp(flag, NIXDES) == 0)
-    {
-        return fNixDes;
-    }
-    else if (strcmp(flag, WINDOWSDES) == 0)
-    {
-        return fWindowsDes;
-    }
-    else
-    {
-        return fInvalid;
-    }
-}
+
 
 /* help
  * Checks if a help flag is entered.
@@ -107,9 +111,8 @@ int help(char * str){
         str[i] = tolower(str[i]);
     }
 
-    if (strcmp(str, "help") == 0){
-        return 0;
-    } else if(strcmp(str, "-h") == 0){
+    if ((strcmp(str, "help") == 0) || (strcmp(str, "-h") == 0)||
+        (strcmp(str, "-help") == 0) || (strcmp(str, "-help") == 0)){
         return 0;
     } else {
         return -1;

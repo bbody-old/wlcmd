@@ -2,16 +2,16 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
 	<File name="error.c" open="1" top="0" tabpos="4">
-		<Cursor position="60" topLine="0" />
+		<Cursor position="828" topLine="0" />
 	</File>
 	<File name="error.h" open="1" top="0" tabpos="3">
 		<Cursor position="197" topLine="0" />
 	</File>
 	<File name="main.c" open="1" top="1" tabpos="1">
-		<Cursor position="1734" topLine="61" />
+		<Cursor position="780" topLine="4" />
 	</File>
 	<File name="wlcmd.c" open="1" top="0" tabpos="2">
-		<Cursor position="397" topLine="0" />
+		<Cursor position="5253" topLine="0" />
 	</File>
 	<File name="wlcmd.h" open="1" top="0" tabpos="5">
 		<Cursor position="241" topLine="0" />

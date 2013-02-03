@@ -8,10 +8,7 @@
 
 typedef enum
 {
-    fNix,
-    fWindows,
-    fNixDes,
-    fWindowsDes,
+    fDes,
     fInvalid
 } Flag;
 
@@ -23,6 +20,7 @@ int sizeCommands;
 
 // Exposed functions
 int commandTranslator(char * command, Flag flag);
+int getIndex(char * command, char ** list);
 int openFile();
 void cleanup();
 
