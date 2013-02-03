@@ -11,7 +11,7 @@ typedef enum
     eUnknown
 } ErrorCode;
 
-// Exposed Function
+/* Exposed Function */
 int error(ErrorCode errorCode);
 
-#endif // ERROR_H_INCLUDED
+#endif /* ERROR_H_INCLUDED */

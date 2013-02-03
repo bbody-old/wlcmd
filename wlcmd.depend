@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1359900804 source:e:\projects\codeblocks\wlcmd\main.c
+1359904924 source:e:\projects\codeblocks\wlcmd\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -14,9 +14,9 @@
 	"wlcmd.h"
 	"error.h"
 
-1359901796 e:\projects\codeblocks\wlcmd\wlcmd.h
+1359904834 e:\projects\codeblocks\wlcmd\wlcmd.h
 
-1359421451 e:\projects\codeblocks\wlcmd\error.h
+1359903873 e:\projects\codeblocks\wlcmd\error.h
 
 1359423946 source:e:\projects\codeblocks\wlcmd\error.c
 	<stdio.h>

@@ -10,7 +10,7 @@
 #define LINELENGTH 2048
 #define ENTRYLENGTH 256
 
-// Functions
+/* Functions */
 int getIndex(char * command, char ** list);
 void stringToArray(char * str, char ** array);
 int openFile();
@@ -84,20 +84,20 @@ int openFile()
     FILE * fp = fopen(COMMANDFILENAME, "r");
     sizeCommands = 0;
 
-    // Windows Commands
+    /* Windows Commands */
     if (fgets(line, sizeof(line),fp) != NULL)
     {
-        // Get the size of the array
+        /* Get the size of the array */
         sizeCommands = countEntries(line);
 
-        // Dynamically allocate array
+        /* Dynamically allocate array */
         winCommands = (char **)malloc(sizeof(char*) * sizeCommands);
         for (i = 0; i < sizeCommands; i++)
         {
             winCommands[i] = malloc(sizeof(char) * ENTRYLENGTH);
         }
 
-        // Assign string to array
+        /* Assign string to array */
         stringToArray(line, winCommands);
     }
     else
@@ -106,17 +106,17 @@ int openFile()
         return eCommandFile;
     }
 
-    // Linux Commands
+    /* Linux Commands */
     if (fgets(line, sizeof(line),fp) != NULL)
     {
-        // Dynamically allocate array
+        /* Dynamically allocate array */
         nixCommands = (char **)malloc(sizeof(char*) * sizeCommands);
         for (i = 0; i < sizeCommands; i++)
         {
             nixCommands[i] = malloc(sizeof(char) * ENTRYLENGTH);
         }
 
-        // Assign string to array
+        /* Assign string to array */
         stringToArray(line, nixCommands);
     }
     else
@@ -125,17 +125,17 @@ int openFile()
         return eCommandFile;
     }
 
-    // Command descriptions
+    /* Command descriptions */
     if (fgets(line, sizeof(line),fp) != NULL)
     {
-        // Dynamically allocate array
+        /* Dynamically allocate array */
         desCommands = (char **)malloc(sizeof(char*) * sizeCommands);
         for (i = 0; i < sizeCommands; i++)
         {
             desCommands[i] = malloc(sizeof(char) * ENTRYLENGTH);
         }
 
-        // Assign string to array
+        /* Assign string to array */
         stringToArray(line, desCommands);
     }
     else

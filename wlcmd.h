@@ -12,16 +12,16 @@ typedef enum
     fInvalid
 } Flag;
 
-// Variables
+/* Variables */
 char ** nixCommands;
 char ** winCommands;
 char ** desCommands;
 int sizeCommands;
 
-// Exposed functions
+/* Exposed functions */
 int commandTranslator(char * command, Flag flag);
 int getIndex(char * command, char ** list);
 int openFile();
 void cleanup();
 
-#endif // WLCMD_H_INCLUDED
+#endif /* WLCMD_H_INCLUDED */
