@@ -12,4 +12,4 @@ E.g. twlcmd ls -> Windows: dir<br />
 <t>twlcmd -d ls -> Windows: dir - Lists files and directories<br />
 <h2>Build</h2>
 <h3>GCC</h3>
-  gcc error.c wlcmd.c main.c -o wlcmd
+<pre>gcc error.c wlcmd.c main.c -o wlcmd</pre>
