@@ -19,12 +19,10 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 #include <ctype.h>
 #include "../headers/wlcmd.h"
 #include "../headers/error.h"
-
-#define SUCCESS 0
+#include "../headers/help.h"
 
 /* Commands */
 Flag parseFlag(char * flag);
-int help(char * str);
 
 int main(int argc, char ** argv, char **envp)
 {
@@ -36,7 +34,7 @@ int main(int argc, char ** argv, char **envp)
     /* Check for help argument */
     if (help(argv[1]))
     {
-        showHelp();
+        return showHelp();
     }
 
     /* Check if can open files */
@@ -111,38 +109,8 @@ int main(int argc, char ** argv, char **envp)
     {
         return error(eAttributes);
     }
-    
+
     cleanup();
 
     return SUCCESS;
 }
-
-
-
-/* help
- * Checks if a help flag is entered.
- */
-int help(char * str){
-    int i = 0;
-    for (i = 0; str[i] != '\0'; i++){
-        str[i] = tolower(str[i]);
-    }
-
-    if ((strcmp(str, "help") == 0) || (strcmp(str, "-h") == 0)||
-        (strcmp(str, "-help") == 0) || (strcmp(str, "-help") == 0)){
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-int showHelp(){
-    printf("Converts some commands between Windows and *nux.\n");
-        printf("Usage: wlcmd [-h|-help|--help]\n"
-            "\t wlcmd [-d (Description)] <command>\n"
-            "E.g. twlcmd ls -> Windows: dir\n"
-            "\t twlcmd -d ls -> Windows: dir - Lists files and directories\n");
-    return SUCCESS;
-}
-
-

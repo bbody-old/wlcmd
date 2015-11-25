@@ -31,7 +31,8 @@ int error(ErrorCode errorCode)
     }
     else if (errorCode == eAttributes)
     {
-        printf("Error: Incorrect number of arguments, need at least 2-3 arguments\n");
+        printf("Error: Incorrect number of arguments, need at least 2-3"
+            " arguments\n");
         return -2;
     }
     else if (errorCode == eCommandFile)
