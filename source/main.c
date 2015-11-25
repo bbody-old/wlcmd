@@ -34,14 +34,9 @@ int main(int argc, char ** argv, char **envp)
     }
 
     /* Check for help argument */
-    if (help(argv[1]) == 0)
+    if (help(argv[1]))
     {
-        printf("Converts some commands between Windows and *nux.\n");
-        printf("Usage: wlcmd [-h|-help|--help]\n"
-            "\t wlcmd [-d (Description)] <command>\n"
-            "E.g. twlcmd ls -> Windows: dir\n"
-            "\t twlcmd -d ls -> Windows: dir - Lists files and directories\n");
-        return SUCCESS;
+        showHelp();
     }
 
     /* Check if can open files */
@@ -116,7 +111,9 @@ int main(int argc, char ** argv, char **envp)
     {
         return error(eAttributes);
     }
+    
     cleanup();
+
     return SUCCESS;
 }
 
@@ -133,10 +130,19 @@ int help(char * str){
 
     if ((strcmp(str, "help") == 0) || (strcmp(str, "-h") == 0)||
         (strcmp(str, "-help") == 0) || (strcmp(str, "-help") == 0)){
-        return 0;
+        return 1;
     } else {
-        return -1;
+        return 0;
     }
+}
+
+int showHelp(){
+    printf("Converts some commands between Windows and *nux.\n");
+        printf("Usage: wlcmd [-h|-help|--help]\n"
+            "\t wlcmd [-d (Description)] <command>\n"
+            "E.g. twlcmd ls -> Windows: dir\n"
+            "\t twlcmd -d ls -> Windows: dir - Lists files and directories\n");
+    return SUCCESS;
 }
 
 
