@@ -27,6 +27,9 @@ int showCommandInformation(char * command, Flag f);
 
 int main(int argc, char ** argv, char **envp)
 {
+    Flag f = fInvalid;
+    char * command;
+
     /* Check there is at least one argument */
     if (!(argc > 1)){
         return error(eAttributes);
@@ -47,14 +50,14 @@ int main(int argc, char ** argv, char **envp)
     /* Check for correct number of arguments */
     if ((argc > 1) && (argc < 4))
     {
-        char * command;
-        Flag f = parseFlag(argc, argv, &command);
+        /* Parse to see if there is a command flag */
+        f = parseFlag(argc, argv, &command);
 
+        /* Print result if it is a valid command */
         if (showCommandInformation(command, f) == FAILURE){
             return error(eCommand);
         }
-    } else
-    {
+    } else {
         return error(eAttributes);
     }
 
@@ -120,6 +123,6 @@ int showCommandInformation(char * command, Flag f){
     }
 
     printf("\n");
-    
+
     return SUCCESS;
 }
