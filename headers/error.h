@@ -17,6 +17,7 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 #define ERROR_H_INCLUDED
 
 #define SUCCESS 0
+#define FAILURE 1
 
 typedef enum
 {

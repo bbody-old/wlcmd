@@ -22,7 +22,8 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 #include "../headers/help.h"
 
 /* Commands */
-Flag parseFlag(char * flag);
+Flag parseFlag(int argc, char ** argv, char ** command);
+int showCommandInformation(char * command, Flag f);
 
 int main(int argc, char ** argv, char **envp)
 {
@@ -46,71 +47,79 @@ int main(int argc, char ** argv, char **envp)
     /* Check for correct number of arguments */
     if ((argc > 1) && (argc < 4))
     {
-        int index = 1;
-        Flag f = fInvalid;
         char * command;
-        int windowsIndex;
-        int nixIndex;
+        Flag f = parseFlag(argc, argv, &command);
 
-        /* If has 2 arguments */
-        if (argc == 3){
-            /* Determine first is a flag */
-            if (argv[1][0] == '-'){
-                if (argv[1][1] == 'd'){
-                    f = fDes;
-                } else {
-                    f = fInvalid;
-                }
-                command = malloc(sizeof(char) * strlen(argv[2]));
-                strcpy(command, argv[2]);
-            } else if (argv[2][0] == '-') { /* Second is flag */
-                if (argv[2][1] == 'd'){
-                    f = fDes;
-                } else {
-                    f = fInvalid;
-                }
-                command = malloc(sizeof(char) * strlen(argv[1]));
-                strcpy(command, argv[1]);
-            } else {
-                 return error(eAttributes);
-            }
-        } else if (argc == 2){ /* If only one */
-            command = malloc(sizeof(char) * strlen(argv[1]));
-            strcpy(command, argv[1]);
-        }
-
-        /* Get an index of both *nix and Window commands */
-        windowsIndex = getIndex(command, winCommands);
-        nixIndex = getIndex(command, nixCommands);
-
-        if ((windowsIndex != -1) && (nixIndex != -1)){ /* If both have same com*/
-            printf("Both: %s", argv[index]);
-            if (f == fDes){
-                printf(" - %s", desCommands[windowsIndex]);
-            }
-            printf("\n");
-        } else if (windowsIndex != -1){ /* If the command is a Windows command */
-            printf("*nix: %s", nixCommands[windowsIndex]);
-            if (f == fDes){
-                printf(" - %s", desCommands[windowsIndex]);
-            }
-            printf("\n");
-        } else if (nixIndex != -1){ /* If command is a *nix command */
-            printf("Windows: %s", winCommands[nixIndex]);
-            if (f == fDes){
-                printf(" - %s", desCommands[nixIndex]);
-            }
-            printf("\n");
-        } else { /* Not a recognised command */
+        if (showCommandInformation(command, f) == FAILURE){
             return error(eCommand);
         }
-    }
-    else
+    } else
     {
         return error(eAttributes);
     }
 
     cleanup();
 
+    return SUCCESS;
+}
+
+Flag parseFlag(int argc, char ** argv, char ** command){
+    Flag f = fInvalid;
+    /* If has 2 arguments */
+    if (argc == 3){
+        /* Determine first is a flag */
+        if (argv[1][0] == '-'){
+            if (argv[1][1] == 'd'){
+                f = fDes;
+            } else {
+                f = fInvalid;
+            }
+            *command = malloc(sizeof(char) * strlen(argv[2]));
+            strcpy(*command, argv[2]);
+        } else if (argv[2][0] == '-') { /* Second is flag */
+            if (argv[2][1] == 'd'){
+                f = fDes;
+            } else {
+                f = fInvalid;
+            }
+            *command = malloc(sizeof(char) * strlen(argv[1]));
+            strcpy(*command, argv[1]);
+        } else {
+             return error(eAttributes);
+        }
+    } else if (argc == 2){ /* If only one */
+        *command = malloc(sizeof(char) * strlen(argv[1]));
+        strcpy(*command, argv[1]);
+    }
+
+    return f;
+}
+
+int showCommandInformation(char * command, Flag f){
+    /* Get an index of both *nix and Window commands */
+    int windowsIndex = getIndex(command, winCommands);
+    int nixIndex = getIndex(command, nixCommands);
+
+    if ((windowsIndex != -1) && (nixIndex != -1)){ /* If both have same com*/
+        printf("Both: %s", desCommands[windowsIndex]);
+        if (f == fDes){
+            printf(" - %s", desCommands[windowsIndex]);
+        }
+    } else if (windowsIndex != -1){ /* If the command is a Windows command */
+        printf("*nix: %s", nixCommands[windowsIndex]);
+        if (f == fDes){
+            printf(" - %s", desCommands[windowsIndex]);
+        }
+    } else if (nixIndex != -1){ /* If command is a *nix command */
+        printf("Windows: %s", winCommands[nixIndex]);
+        if (f == fDes){
+            printf(" - %s", desCommands[nixIndex]);
+        }
+    } else { /* Not a recognised command */
+        return FAILURE;
+    }
+
+    printf("\n");
+    
     return SUCCESS;
 }
