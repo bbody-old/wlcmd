@@ -12,12 +12,9 @@ E.g. twlcmd ls -> Windows: dir<br />
 <t>twlcmd -d ls -> Windows: dir - Lists files and directories<br />
 <h2>Build</h2>
 <h3>GCC</h3>
-<pre>gcc error.c wlcmd.c main.c -o wlcmd</pre>
+<pre>gcc source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd</pre>
 <h3>Makefile</h3>
 <h4>Compile</h4>
 <pre>make</pre>
 <h4>Clean</h4>
 <pre>make clean</pre>
-<h3>Codeblocks</h3>
-1. Open Codeblocks project file in Codeblocks
-2. Build
