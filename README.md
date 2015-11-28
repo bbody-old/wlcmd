@@ -1,12 +1,24 @@
-<h2>Introduction</h2>
-wlcmd - Windows/*Nix Commands</br>
-<p>A tool I made so I could get equivalent commands of some *Nix and Windows commands. 
-Written in Windows using Code::Blocks and in C (ANSI Compliant). Has been tested on Windows 7 (64-bit), Ubuntu and Mac OSX.</p>
-Inspired by my blog article <a href="http://www.brendonbody.com/2013/01/28/windows-and-nix-command-equivalents/">Windows and *nix command equivalents</a><br/>
-A Windows Executable found <a href="https://github.com/bbody/wlcmd/releases/latest">here</a>.
-<h2>Manual</h2>
-<p>Converts some commands between Windows and Linux.</p>
-Usage: wlcmd [-h|-help|--help]<br />
+# Introduction
+
+wlcmd - Windows/*Nix Commands
+
+A tool I made so I could get equivalent commands of some *Nix and Windows commands. 
+Written in C89. Has been tested on Windows 7 (64-bit), Ubuntu and Mac OSX.
+
+Inspired by my blog article [Windows and *nix command equivalents](http://www.brendonbody.com/2013/01/28/windows-and-nix-command-equivalents/)
+
+A Windows Executable found [here](https://github.com/bbody/wlcmd/releases/latest).
+
+# Screenshot
+
+![alt text](http://www.brendonbody.com/wp-content/uploads/2013/01/Screen-Shot-2015-11-29-at-7.47.14-am.png "Command line screenshot of wlcmd")
+
+# Manual
+
+Converts some commands between Windows and Linux.
+
+Usage: wlcmd [-h|-help|--help]
+
 <t>wlcmd [-d (Description)] <command><br />
 E.g. twlcmd ls -> Windows: dir<br />
 <t>twlcmd -d ls -> Windows: dir - Lists files and directories<br />
@@ -20,3 +32,4 @@ E.g. twlcmd ls -> Windows: dir<br />
 <pre>make</pre>
 <h4>Clean</h4>
 <pre>make clean</pre>
+
