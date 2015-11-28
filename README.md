@@ -12,7 +12,9 @@ E.g. twlcmd ls -> Windows: dir<br />
 <t>twlcmd -d ls -> Windows: dir - Lists files and directories<br />
 <h2>Build</h2>
 <h3>GCC</h3>
-<pre>gcc source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd</pre>
+<pre>gcc -std=c89 source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd</pre>
+<h3>Clang</h3>
+<pre>clang -std=c89 source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd</pre>
 <h3>Makefile</h3>
 <h4>Compile</h4>
 <pre>make</pre>
