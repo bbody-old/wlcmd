@@ -20,10 +20,17 @@ A Windows Executable found [here](https://github.com/bbody/wlcmd/releases/latest
 Converts some commands between Windows and Linux.
 
 ## Help
-
 Usage: wlcmd [-h|-help|--help]
 
-e.g. `wlcmd -help`
+### Example Command
+`wlcmd -help`
+
+### Output
+``` Converts some commands between Windows and *nux.
+Usage: wlcmd [-h|-help|--help]
+	 wlcmd [-d (Description)] <command>
+E.g. twlcmd ls -> Windows: dir
+	 twlcmd -d ls -> Windows: dir - Lists files and directories```
 
 ## Full descriptions
 Usage: wlcmd [-d (Description)] command
