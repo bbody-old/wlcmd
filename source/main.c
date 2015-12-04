@@ -27,7 +27,7 @@ int showCommandInformation(char * command, Flag f);
 
 int main(int argc, char ** argv, char **envp)
 {
-    Flag f = fInvalid;
+    Flag f = fError;
     char * command;
 
     /* Check there is at least one argument */
@@ -53,6 +53,11 @@ int main(int argc, char ** argv, char **envp)
         /* Parse to see if there is a command flag */
         f = parseFlag(argc, argv, &command);
 
+        /* Check that the description flag is valid */
+        if (f == fError){
+            return error(eFlag);
+        }
+
         /* Print result if it is a valid command */
         if (showCommandInformation(command, f) == FAILURE){
             return error(eCommand);
@@ -67,7 +72,7 @@ int main(int argc, char ** argv, char **envp)
 }
 
 Flag parseFlag(int argc, char ** argv, char ** command){
-    Flag f = fInvalid;
+    Flag f = fError;
     /* If has 2 arguments */
     if (argc == 3){
         /* Determine first is a flag */
@@ -75,7 +80,7 @@ Flag parseFlag(int argc, char ** argv, char ** command){
             if (argv[1][1] == 'd'){
                 f = fDes;
             } else {
-                f = fInvalid;
+                f = fNoDes;
             }
             *command = malloc(sizeof(char) * strlen(argv[2]));
             strcpy(*command, argv[2]);
@@ -83,12 +88,12 @@ Flag parseFlag(int argc, char ** argv, char ** command){
             if (argv[2][1] == 'd'){
                 f = fDes;
             } else {
-                f = fInvalid;
+                f = fNoDes;
             }
             *command = malloc(sizeof(char) * strlen(argv[1]));
             strcpy(*command, argv[1]);
         } else {
-             return error(eAttributes);
+             f = fError;
         }
     } else if (argc == 2){ /* If only one */
         *command = malloc(sizeof(char) * strlen(argv[1]));

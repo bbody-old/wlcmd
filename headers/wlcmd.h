@@ -24,7 +24,8 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 typedef enum
 {
     fDes,
-    fInvalid
+    fNoDes,
+    fError
 } Flag;
 
 /* Variables */

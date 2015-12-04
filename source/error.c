@@ -26,7 +26,7 @@ int error(ErrorCode errorCode)
     cleanup();
     if (errorCode == eFlag)
     {
-        printf("Error: Invalid flag. Windows -w, *nix -n, Description -d.\n");
+        printf("Error: Invalid flag. Description -d.\n");
         return -1;
     }
     else if (errorCode == eAttributes)
