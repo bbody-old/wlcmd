@@ -25,6 +25,12 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 #define LINELENGTH 2048
 #define ENTRYLENGTH 256
 
+/* Variables */
+char ** nixCommands;
+char ** winCommands;
+char ** desCommands;
+int sizeCommands;
+
 /* Functions */
 int getIndex(char * command, char ** list);
 void stringToArray(char * str, char ** array);

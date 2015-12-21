@@ -29,10 +29,10 @@ typedef enum
 } Flag;
 
 /* Variables */
-char ** nixCommands;
-char ** winCommands;
-char ** desCommands;
-int sizeCommands;
+extern char ** nixCommands;
+extern char ** winCommands;
+extern char ** desCommands;
+extern int sizeCommands;
 
 /* Exposed functions */
 int commandTranslator(char * command, Flag flag);
