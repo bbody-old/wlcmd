@@ -14,3 +14,4 @@ clean:
 	$(RM) wlcmd
 	-rm -f *.out
 	-rm -f *.gcno
+	-rm -r wlcmd.dSYM
