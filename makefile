@@ -12,3 +12,5 @@ dev:
 
 clean:
 	$(RM) wlcmd
+	-rm -f *.out
+	-rm -f *.gcno
