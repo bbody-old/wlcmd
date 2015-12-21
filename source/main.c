@@ -25,7 +25,7 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 Flag parseFlag(int argc, char ** argv, char ** command);
 int showCommandInformation(char * command, Flag f);
 
-int main(int argc, char ** argv, char **envp)
+int main(int argc, char ** argv)
 {
     Flag f = fError;
     char * command;

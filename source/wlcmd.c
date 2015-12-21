@@ -106,7 +106,7 @@ int openFile()
         sizeCommands = countEntries(line);
 
         /* Dynamically allocate array */
-        winCommands = (char **)malloc(sizeof(char*) * sizeCommands);
+        winCommands = (char **)malloc(sizeof(char*) * (unsigned long)sizeCommands);
         for (i = 0; i < sizeCommands; i++)
         {
             winCommands[i] = malloc(sizeof(char) * ENTRYLENGTH);
@@ -125,7 +125,7 @@ int openFile()
     if (fgets(line, sizeof(line),fp) != NULL)
     {
         /* Dynamically allocate array */
-        nixCommands = (char **)malloc(sizeof(char*) * sizeCommands);
+        nixCommands = (char **)malloc(sizeof(char*) * (unsigned long)sizeCommands);
         for (i = 0; i < sizeCommands; i++)
         {
             nixCommands[i] = malloc(sizeof(char) * ENTRYLENGTH);
@@ -144,7 +144,7 @@ int openFile()
     if (fgets(line, sizeof(line),fp) != NULL)
     {
         /* Dynamically allocate array */
-        desCommands = (char **)malloc(sizeof(char*) * sizeCommands);
+        desCommands = (char **)malloc(sizeof(char*) * (unsigned long)sizeCommands);
         for (i = 0; i < sizeCommands; i++)
         {
             desCommands[i] = malloc(sizeof(char) * ENTRYLENGTH);

@@ -26,7 +26,7 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 int help(char * str){
     int i = 0;
     for (i = 0; str[i] != '\0'; i++){
-        str[i] = tolower(str[i]);
+        str[i] = (char)tolower(str[i]);
     }
 
     if ((strcmp(str, "help") == 0) || (strcmp(str, "-h") == 0)||
