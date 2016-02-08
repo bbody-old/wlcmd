@@ -98,6 +98,7 @@ Flag parseFlag(int argc, char ** argv, char ** command){
     } else if (argc == 2){ /* If only one */
         *command = malloc(sizeof(char) * strlen(argv[1]));
         strcpy(*command, argv[1]);
+        f = fNoDes;
     }
 
     return f;

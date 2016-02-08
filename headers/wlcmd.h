@@ -15,10 +15,6 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 
 #ifndef WLCMD_H_INCLUDED
 #define WLCMD_H_INCLUDED
-#define NIX "-n"
-#define WINDOWS "-w"
-#define NIXDES "-nd"
-#define WINDOWSDES "-wd"
 #define DES "-d"
 
 typedef enum
