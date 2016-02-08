@@ -29,8 +29,8 @@ Usage: wlcmd [-h|-help|--help]
 ``` Converts some commands between Windows and *nux.
 Usage: wlcmd [-h|-help|--help]
 	 wlcmd [-d (Description)] <command>
-E.g. twlcmd ls -> Windows: dir
-	 twlcmd -d ls -> Windows: dir - Lists files and directories```
+E.g. wlcmd ls -> Windows: dir
+	 wlcmd -d ls -> Windows: dir - Lists files and directories```
 
 ## Full descriptions
 Usage: wlcmd [-d (Description)] command
