@@ -9,7 +9,7 @@ Inspired by my blog article [Windows and *nix command equivalents](http://www.br
 
 ## Screenshot
 
-![alt text](http://www.brendonbody.com/wp-content/uploads/2013/01/Screen-Shot-2015-11-29-at-7.47.14-am.png "Command line screenshot of wlcmd")
+![alt text](https://s3-ap-southeast-2.amazonaws.com/bbody-images/github/wlcmd/screenshot.png "Command line screenshot of wlcmd")
 
 ## Executable
 
