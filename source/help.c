@@ -44,7 +44,7 @@ int showHelp(){
     printf("Converts some commands between Windows and *nux.\n");
         printf("Usage: wlcmd [-h|-help|--help]\n"
             "\t wlcmd [-d (Description)] <command>\n"
-            "E.g. twlcmd ls -> Windows: dir\n"
-            "\t twlcmd -d ls -> Windows: dir - Lists files and directories\n");
+            "E.g. wlcmd ls -> Windows: dir\n"
+            "\t wlcmd -d ls -> Windows: dir - Lists files and directories\n");
     return SUCCESS;
 }
