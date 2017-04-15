@@ -26,18 +26,23 @@ Usage: wlcmd [-h|-help|--help]
 `wlcmd -help`
 
 ### Output
-``` Converts some commands between Windows and *nux.
+```
+Converts some commands between Windows and *nux.
 Usage: wlcmd [-h|-help|--help]
 	 wlcmd [-d (Description)] <command>
 E.g. wlcmd ls -> Windows: dir
-	 wlcmd -d ls -> Windows: dir - Lists files and directories```
+	 wlcmd -d ls -> Windows: dir - Lists files and directories
+```
+
 
 ## Full descriptions
 Usage: wlcmd [-d (Description)] command
 
+
 ### Example Command
 
 `wlcmd -d ls`
+
 
 ### Output
 
@@ -54,21 +59,27 @@ Usage: wlcmd command
 
 `*nix: ls`
 
+
 # Build
+
 
 ## GCC
 
 `gcc -std=c89 source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd`
 
+
 ## Clang
 
 `clang -std=c89 source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd`
 
+
 ## Makefile
+
 
 ### Compile
 
 `make`
+
 
 ### Clean
 
