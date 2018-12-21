@@ -11,11 +11,11 @@ release_linux:
 	cp commands.txt release_linux/commands.txt
 	tar -czvf release_linux.tar.gz release_linux/*
 release_windows:
-	mkdir windows_bin
+	mkdir release_windows
 	gcc -lm -std=c89 -pedantic -O3 -DNDEBUG -funroll-loops \
-	source/error.c source/wlcmd.c source/help.c source/main.c -o windows_bin/wlcmd.exe
+	source/error.c source/wlcmd.c source/help.c source/main.c -o release_windows/wlcmd.exe
 	copy commands.txt release_windows/commands.txt
-	Compress-Archive -Path release_windows\\* -DestinationPath .\\
+	Compress-Archive -Path release_windows/* -DestinationPath ./
 dev:
 	mkdir bin
 	gcc -Wall -Wextra -Wformat=2 -Wswitch-default -Wcast-align -Wpointer-arith \
