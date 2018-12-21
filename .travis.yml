@@ -1,8 +1,9 @@
 language: c
+install: true
 matrix:
   include:
     - os: windows
-      install: choco install mingw --version 4.9.3
+      install: choco install -y mingw
       script: mingw32-make release_windows
     - os: linux
       script: make release_linux
