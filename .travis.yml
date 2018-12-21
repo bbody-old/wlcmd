@@ -5,7 +5,7 @@ matrix:
       install: choco install mingw --version 4.9.3 --force
       script: mingw32-make release_windows
     - os: linux
-      script: make release
+      script: make release_linux
       compile:
       - gcc
       - clang
@@ -13,7 +13,7 @@ matrix:
       compile:
       - gcc
       - clang
-      script: make release
+      script: make release_osx
 # deploy:
 #   provider: releases
 #   api_key:
