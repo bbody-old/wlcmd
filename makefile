@@ -12,8 +12,6 @@ release_linux:
 	tar -czvf release_linux.tar.gz release_linux/*
 release_windows:
 	mkdir release_windows
-	dir
-	pwd
 	gcc -lm -std=c89 -pedantic -O3 -DNDEBUG -funroll-loops \
 	source/error.c source/wlcmd.c source/help.c source/main.c -o release_windows/wlcmd.exe
 	cp ./commands.txt ./release_windows/commands.txt
