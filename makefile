@@ -16,8 +16,8 @@ release_windows:
 	pwd
 	gcc -lm -std=c89 -pedantic -O3 -DNDEBUG -funroll-loops \
 	source/error.c source/wlcmd.c source/help.c source/main.c -o release_windows/wlcmd.exe
-	copy .\\commands.txt release_windows\\commands.txt
-	Compress-Archive -Path release_windows/* -DestinationPath ./
+	copy commands.txt release_windows
+	Compress-Archive -Path release_windows\*
 dev:
 	mkdir bin
 	gcc -Wall -Wextra -Wformat=2 -Wswitch-default -Wcast-align -Wpointer-arith \
