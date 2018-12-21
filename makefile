@@ -1,8 +1,13 @@
-all:
+release:
+	mkdir bin
 	gcc -lm -std=c89 -pedantic -O3 -DNDEBUG -funroll-loops \
 	source/error.c source/wlcmd.c source/help.c source/main.c -o bin/wlcmd
-
+release_windows:
+	mkdir bin
+	gcc -lm -std=c89 -pedantic -O3 -DNDEBUG -funroll-loops \
+	source/error.c source/wlcmd.c source/help.c source/main.c -o bin/wlcmd.exe
 dev:
+	mkdir bin
 	gcc -Wall -Wextra -Wformat=2 -Wswitch-default -Wcast-align -Wpointer-arith \
     -Wbad-function-cast -Wstrict-prototypes -Winline -Wundef -Wnested-externs \
     -Wcast-qual -Wshadow -Wwrite-strings -Wconversion -Wunreachable-code \
