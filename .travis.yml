@@ -14,13 +14,14 @@ matrix:
       - gcc
       - clang
       script: make release_osx
-# deploy:
-#   provider: releases
-#   api_key:
-#   skip_cleanup: true
-#   file:
-#     - wlcmd
-#     - wlcmd.exe
-#   on:
-#     branch: master
-#     tags: true
+deploy:
+  provider: releases
+  api_key: $GH_TOKEN
+  skip_cleanup: true
+  file:
+    - release_osx.tar.gz
+    - release_linux.tar.gz
+    - release_windows.zip
+  on:
+    branch: master
+    tags: true
