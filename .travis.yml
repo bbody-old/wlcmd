@@ -9,4 +9,4 @@ compile:
 before_install:
   - mkdir bin
 script:
-  - make
+  - cmake
