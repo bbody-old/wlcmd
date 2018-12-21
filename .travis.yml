@@ -6,16 +6,11 @@ matrix:
       script: cmake release_windows
     - os: linux
       script: make release
+      compile:
+      - gcc
+      - clang
     - os: osx
+      compile:
+      - gcc
+      - clang
       script: make release
-os:
-  - windows
-  - linux
-  - osx
-compile:
-  - gcc
-  - clang
-before_install:
-  - mkdir bin
-script:
-  - cmake
