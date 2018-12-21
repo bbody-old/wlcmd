@@ -1,0 +1,27 @@
+language: c
+install: true
+matrix:
+  include:
+    - os: windows
+      script: mingw32-make release_windows
+    - os: linux
+      script: make release_linux
+      compile:
+      - gcc
+      - clang
+    - os: osx
+      compile:
+      - gcc
+      - clang
+      script: make release_osx
+deploy:
+  provider: releases
+  api_key: $GH_TOKEN
+  skip_cleanup: true
+  file:
+    - release_osx.tar.gz
+    - release_linux.tar.gz
+    - release_windows.zip
+  on:
+    branch: master
+    tags: true
