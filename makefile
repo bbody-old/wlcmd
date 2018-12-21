@@ -14,7 +14,7 @@ release_windows:
 	mkdir release_windows
 	gcc -lm -std=c89 -pedantic -O3 -DNDEBUG -funroll-loops \
 	source/error.c source/wlcmd.c source/help.c source/main.c -o release_windows/wlcmd.exe
-	copy commands.txt release_windows/commands.txt
+	copy commands.txt release_windows\\commands.txt
 	Compress-Archive -Path release_windows/* -DestinationPath ./
 dev:
 	mkdir bin
