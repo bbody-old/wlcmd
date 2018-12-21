@@ -14,3 +14,13 @@ matrix:
       - gcc
       - clang
       script: make release
+deploy:
+  provider: releases
+  api_key:
+  skip_cleanup: true
+  file:
+    - wlcmd
+    - wlcmd.exe
+  on:
+    branch: master
+    tags: true
