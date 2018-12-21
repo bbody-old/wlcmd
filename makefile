@@ -1,6 +1,6 @@
 all:
 	gcc -lm -std=c89 -pedantic -O3 -DNDEBUG -funroll-loops \
-	source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd
+	source/error.c source/wlcmd.c source/help.c source/main.c -o bin/wlcmd
 
 dev:
 	gcc -Wall -Wextra -Wformat=2 -Wswitch-default -Wcast-align -Wpointer-arith \
@@ -8,10 +8,10 @@ dev:
     -Wcast-qual -Wshadow -Wwrite-strings -Wconversion -Wunreachable-code \
     -Wstrict-aliasing=2 -fno-common -fstrict-aliasing \
     -lm -std=c89 -pedantic -O0 -ggdb3 -pg --coverage \
-    source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd
+    source/error.c source/wlcmd.c source/help.c source/main.c -o bin/wlcmd
 
 clean:
-	$(RM) wlcmd
-	-rm -f *.out
-	-rm -f *.gcno
-	-rm -r wlcmd.dSYM
+	$(RM) bin/wlcmd
+	-rm -f bin/*.out
+	-rm -f bin/*.gcno
+	-rm -r bin/wlcmd.dSYM
