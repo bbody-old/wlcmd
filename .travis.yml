@@ -1,9 +1,6 @@
 language: c
 matrix:
   include:
-    - os: windows
-      install: choco install mingw
-      script: make release_windows
     - os: linux
       script: make release
       compile:
