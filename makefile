@@ -17,7 +17,7 @@ release_windows:
 	gcc -lm -std=c89 -pedantic -O3 -DNDEBUG -funroll-loops \
 	source/error.c source/wlcmd.c source/help.c source/main.c -o release_windows/wlcmd.exe
 	cp ./commands.txt ./release_windows/commands.txt
-	powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('release_windows.zip', 'release_windows'); }"
+	z7 d release_windows.zip release_windows/* -r
 dev:
 	mkdir bin
 	gcc -Wall -Wextra -Wformat=2 -Wswitch-default -Wcast-align -Wpointer-arith \
