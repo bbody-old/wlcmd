@@ -42,7 +42,7 @@ int main(int argc, char ** argv)
     }
 
     /* Check if can open files */
-    if (openFile() == eCommandFile)
+    if (openFile(argv[0]) == eCommandFile)
     {
         return error(eCommandFile);
     }

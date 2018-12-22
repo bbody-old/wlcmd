@@ -37,7 +37,7 @@ int error(ErrorCode errorCode)
     }
     else if (errorCode == eCommandFile)
     {
-        printf("Error: Command file could not formatted correctly.\n");
+        printf("Error: Command file could not be opened or not formatted correctly.\n");
         return -3;
     }
     else if (errorCode == eCommand)

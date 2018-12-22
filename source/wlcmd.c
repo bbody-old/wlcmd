@@ -19,7 +19,7 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 #include "../headers/wlcmd.h"
 #include "../headers/error.h"
 
-#define COMMANDFILENAME "./commands.txt"
+#define COMMANDFILENAME "commands.txt"
 #define TOKENIZER ";"
 #define DIVIDER ';'
 #define LINELENGTH 2048
@@ -34,7 +34,7 @@ int sizeCommands;
 /* Functions */
 int getIndex(char * command, char ** list);
 void stringToArray(char * str, char ** array);
-int openFile(void);
+int openFile(char * executablePath);
 int countEntries(char * str);
 
 /* getIndex
@@ -98,15 +98,35 @@ int countEntries(char * str)
 /* stringToArray
  * Turns a string split by a token into an array.
  */
-int openFile(void)
+int openFile(char * executablePath)
 {
     int i = 0;
     char line[LINELENGTH];
-    FILE * fp = fopen(COMMANDFILENAME, "r");
+    char * commandFile;
+    int executablePathLength = strlen(executablePath) - strlen("wlcmd");
+    int totalLength = executablePathLength + strlen(COMMANDFILENAME);
+    FILE * fp = NULL;
+
+    commandFile = (char*) malloc(sizeof(char) * (unsigned long)(totalLength) + 1);
+
+    for (i = 0; i < totalLength; i++)
+    {
+        if (i < executablePathLength) {
+            commandFile[i] = executablePath[i];
+        } else {
+            commandFile[i] = COMMANDFILENAME[i - executablePathLength];
+        }
+    }
+
+    commandFile[i] = '\0';
+
+    fp = fopen(commandFile, "r");
+
+    free(commandFile);
     sizeCommands = 0;
 
     /* Windows Commands */
-    if (fgets(line, sizeof(line),fp) != NULL)
+    if (fp != 0 && fgets(line, sizeof(line),fp) != NULL)
     {
         /* Get the size of the array */
         sizeCommands = countEntries(line);
