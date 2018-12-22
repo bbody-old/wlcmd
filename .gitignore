@@ -4,6 +4,7 @@
 
 # Object files
 *.o
+*.gcno
 
 # Libraries
 *.lib
@@ -21,4 +22,13 @@
 *.app
 wlcmd
 
+# Build folders
 bin/*
+release_osx/*
+release_linux/*
+release_windows/*
+
+# Release archive
+release_osx.tar.gz
+release_linux.tar.gz
+release_windows.tar.gz
