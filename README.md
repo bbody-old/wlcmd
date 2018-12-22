@@ -1,29 +1,59 @@
-# Introduction
+[![Build Status](https://travis-ci.org/bbody/wlcmd.svg?branch=master)](https://travis-ci.org/bbody/wlcmd)
 
-wlcmd - Windows/*Nix Commands
+# wlcmd - Windows/\*Nix Command Dictionary
 
-A tool I made so I could get equivalent commands of some *Nix and Windows commands. 
-Written in C89. Has been tested on Windows 7 (64-bit), Ubuntu and Mac OSX.
+**Note:** This project has been archived as I don't use it or actively develop.
 
-## Screenshot
+A tool I made so I could get equivalent commands of some \*Nix and Windows commands. I developed when I was using a Windows computer and I needed to know Windows commands.
 
-![alt text](https://s3-ap-southeast-2.amazonaws.com/bbody-images/github/wlcmd/screenshot.png "Command line screenshot of wlcmd")
+Written in C89 with very conservative flags.
 
-## Executable
+Has been tested on:
 
-A Windows Executable found [here](https://github.com/bbody/wlcmd/releases/latest).
+* Windows 7 (64-bit)
+* Ubuntu
+* Mac OSX.
 
-# Usage
+![alt text](https://raw.githubusercontent.com/bbody/wlcmd/master/screenshot.png "Command line screenshot of wlcmd")
+
+## Usage
 
 Converts some commands between Windows and Linux.
 
-## Help
-Usage: wlcmd [-h|-help|--help]
+### Basic
+Usage: `wlcmd command`
 
-### Example Command
+Flags:
+
+* Description: [-d]
+* Help: [-h | -help | --help]
+
+#### Examples
+##### Basic
+`wlcmd dir`
+
+###### Output
+
+```
+*nix: ls
+```
+
+##### With Description
+
+`wlcmd -d ls`
+
+###### Output
+
+```
+`Windows: dir - Lists files and directories`
+```
+
+##### Help
+
 `wlcmd -help`
 
-### Output
+###### Output
+
 ```
 Converts some commands between Windows and *nux.
 Usage: wlcmd [-h|-help|--help]
@@ -32,68 +62,19 @@ E.g. wlcmd ls -> Windows: dir
 	 wlcmd -d ls -> Windows: dir - Lists files and directories
 ```
 
+## Executables
 
-## Full descriptions
-Usage: wlcmd [-d (Description)] command
+Executables can be found in [Github releases](https://github.com/bbody/wlcmd/releases/latest).
 
+**Note:** Use of this software is at own as is without any warranty.
 
-### Example Command
+## Development
 
-`wlcmd -d ls`
+Run the following command
 
-
-### Output
-
-`Windows: dir - Lists files and directories`
-
-## Verbose
-Usage: wlcmd command
-
-### Example Command
-
-`wlcmd dir`
-
-### Output
-
-`*nix: ls`
-
-
-# Build
-
-
-## GCC
-
-`gcc -std=c89 source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd`
-
-
-## Clang
-
-`clang -std=c89 source/error.c source/wlcmd.c source/help.c source/main.c -o wlcmd`
-
-
-## Makefile
-
-
-### Compile
-
-`make`
-
+### Build
+`make dev`
 
 ### Clean
 
 `make clean`
-
-## Add to command line
-
-### *nix
-1. `git clone git@github.com:bbody/wlcmd.git`
-2. `cd wlcmd`
-3. `make`
-4. `mkdir ~/bin`
-5. `cp wlcmd ~/bin/`
-6. `vim ~/.profile`
-7. Add the following line at the bottom
-	1. `export PATH="/home/$USER/bin:$PATH"`
-	2. `export PATH=.:$PATH`
-8. `source ~/.bashrc`
-9. `source ~/.profile`
