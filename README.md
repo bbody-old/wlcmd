@@ -14,7 +14,7 @@ Has been tested on:
 * Ubuntu
 * Mac OSX.
 
-![alt text](https://raw.githubusercontent.com/bbody/wlcmd/master/screenshot.png "Command line screenshot of wlcmd")
+![alt text](https://raw.githubusercontent.com/bbody/wlcmd/master/demo.gif "Command line demo of wlcmd")
 
 ## Usage
 
