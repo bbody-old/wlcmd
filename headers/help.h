@@ -17,7 +17,7 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 #define HELP_H_INCLUDED
 
 /* Exposed functions */
-int showHelp();
-int help();
+int showHelp(void);
+int help(char * str);
 
 #endif /* HELP_H_INCLUDED */

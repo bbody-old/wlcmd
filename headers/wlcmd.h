@@ -33,7 +33,7 @@ extern int sizeCommands;
 /* Exposed functions */
 int commandTranslator(char * command, Flag flag);
 int getIndex(char * command, char ** list);
-int openFile();
-void cleanup();
+int openFile(void);
+void cleanup(void);
 
 #endif /* WLCMD_H_INCLUDED */

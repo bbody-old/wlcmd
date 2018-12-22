@@ -19,7 +19,7 @@ along with Wlcmd.  If not, see <http://www.gnu.org/licenses/>.*/
 #include "../headers/wlcmd.h"
 #include "../headers/error.h"
 
-#define COMMANDFILENAME "commands.txt"
+#define COMMANDFILENAME "./commands.txt"
 #define TOKENIZER ";"
 #define DIVIDER ';'
 #define LINELENGTH 2048
@@ -34,7 +34,7 @@ int sizeCommands;
 /* Functions */
 int getIndex(char * command, char ** list);
 void stringToArray(char * str, char ** array);
-int openFile();
+int openFile(void);
 int countEntries(char * str);
 
 /* getIndex
@@ -98,7 +98,7 @@ int countEntries(char * str)
 /* stringToArray
  * Turns a string split by a token into an array.
  */
-int openFile()
+int openFile(void)
 {
     int i = 0;
     char line[LINELENGTH];
@@ -172,7 +172,7 @@ int openFile()
 /* cleanup
  * Cleans up dynamically allocated variables.
  */
-void cleanup()
+void cleanup(void)
 {
     int i = 0;
     if (winCommands != NULL)

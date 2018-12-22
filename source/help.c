@@ -40,7 +40,7 @@ int help(char * str){
 /* showHelp
  * Prints out help information.
  */
-int showHelp(){
+int showHelp(void){
     printf("Converts some commands between Windows and *nux.\n");
         printf("Usage: wlcmd [-h|-help|--help]\n"
             "\t wlcmd [-d (Description)] <command>\n"
