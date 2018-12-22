@@ -17,13 +17,14 @@ release_windows:
 	cp ./commands.txt ./release_windows/commands.txt
 	7z d release_windows.zip release_windows/* -r
 dev:
-	mkdir bin
+	mkdir -p bin
 	gcc -Wall -Wextra -Wformat=2 -Wswitch-default -Wcast-align -Wpointer-arith \
     -Wbad-function-cast -Wstrict-prototypes -Winline -Wundef -Wnested-externs \
     -Wcast-qual -Wshadow -Wwrite-strings -Wconversion -Wunreachable-code \
     -Wstrict-aliasing=2 -fno-common -fstrict-aliasing \
     -lm -std=c89 -pedantic -O0 -ggdb3 -pg --coverage \
     source/error.c source/wlcmd.c source/help.c source/main.c -o bin/wlcmd
+	cp commands.txt bin/commands.txt
 clean:
 	$(RM) bin/wlcmd
 	-rm -f bin/*.out
